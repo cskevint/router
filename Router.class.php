@@ -5,9 +5,14 @@
 /* http://bencrowder.net/coding/router    */
 
 class Router {
-	public static function route($url, $routes, $defaultHandler) {
+	public static function route($url, $routes, $defaultHandler, $path=null) {
 		$found = false;
-
+		
+		if($path) {
+			$path = rtrim($path, "/");
+			$url = str_replace($path, '', $url);
+		}
+		
 		// go through each route and see if it matches; if so, execute the handler
 		foreach ($routes as $pattern=>$handler) {
 			if (preg_match($pattern, $url, $matches)) {

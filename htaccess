@@ -1,4 +1,7 @@
 RewriteEngine On
+# Set RewriteBase to the public path of your index.php file
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# If you are using an index.php file that is not in the WEB_ROOT remove the / from below
 RewriteRule . /index.php	[L]
